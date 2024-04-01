@@ -9,18 +9,19 @@ on:
       - main
 
 jobs:
-  qodana:
+  code_quality:
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
       checks: write
     steps:
-      - uses: actions/checkout@v4.1.2
+      - name: Run .NET Code Analysis
+        uses: dotnet/code-analysis@v1
+        id: code-analysis
         with:
-          ref: ${{ github.event.pull_request.head.sha }}  # to check out the actual pull request commit, not the merge commit
-          fetch-depth: 0  # a full history is required for pull request analysis
-      - name: 'Qodana Scan'
-        uses: JetBrains/qodana-action@v2023.3.2
-        env:
-          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+          projects: src\*.csproj
+          build-breaking: true
+          security: 8.0-all
+          performance: 8.0-all
+          all-categories: 8.0-all
