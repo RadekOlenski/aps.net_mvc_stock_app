@@ -3,15 +3,7 @@
 // </copyright>
 
 var builder = WebApplication.CreateBuilder(args);
-var services = builder.Services;
-
-services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-services.AddControllers();
-
 var app = builder.Build();
 
-app.UseStaticFiles();
-
-app.MapGet("/", static () => "Hello World!");
-
+app.Map("/", static context => context.Response.WriteAsync("hello world"));
 app.Run();

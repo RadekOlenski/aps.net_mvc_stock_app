@@ -6,7 +6,8 @@
     <CodeAnalysisRuleSet>../Ruleset.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="JavaScriptEngineSwitcher.Extensions.MsDependencyInjection" Version="3.24.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    <PackageReference Include="Moq" Version="4.20.70" />
     <PackageReference Include="NUnit" Version="4.1.0" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
       <PrivateAssets>all</PrivateAssets>
@@ -14,26 +15,6 @@
     </PackageReference>
     <AdditionalFiles Include="../stylecop.json" />
     <AdditionalFiles Include="../Ruleset.ruleset" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\.github\workflows\build.yml">
-      <Link>.github\workflows\build.yml</Link>
-    </Content>
-    <Content Include="..\.husky\commit-msg">
-      <Link>.husky\commit-msg</Link>
-    </Content>
-    <Content Include="..\.husky\task-runner.json">
-      <Link>.husky\task-runner.json</Link>
-    </Content>
-    <Content Include="..\.husky\_\.gitignore">
-      <Link>.husky\_\.gitignore</Link>
-    </Content>
-    <Content Include="..\.husky\_\husky.sh">
-      <Link>.husky\_\husky.sh</Link>
-    </Content>
-    <Content Include="..\.scripts\lint_commit_message.csx">
-      <Link>.scripts\lint_commit_message.csx</Link>
-    </Content>
   </ItemGroup>
   <Target Name="Husky" BeforeTargets="Restore;CollectPackageReferences" Condition="'$(HUSKY)' != 0">
     <Exec Command="dotnet tool restore" StandardOutputImportance="Low" StandardErrorImportance="High" />
