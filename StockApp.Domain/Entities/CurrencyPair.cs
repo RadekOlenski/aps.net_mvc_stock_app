@@ -4,13 +4,15 @@
 
 namespace StockApp.Domain.Entities;
 
-public class CurrencyPair
+public sealed class CurrencyPair
 {
-    public required Currency Ask { get; set; }
+    public required Currency Ask { get; init; }
 
-    public required Currency Bid { get; set; }
+    public required Currency Bid { get; init; }
 
     public string EncodedName { get; private set; } = default!;
+
+    public required int ID { get; init; }
 
     public void EncodeName() => EncodedName = $"{Bid.Code}/{Ask.Code}";
 }

@@ -7,6 +7,11 @@
         <CodeAnalysisRuleSet>../Ruleset.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-preview.2.24128.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0-preview.2.24128.4">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Moq" Version="4.20.70" />
         <PackageReference Include="NUnit" Version="4.1.0" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
@@ -15,6 +20,10 @@
         </PackageReference>
         <AdditionalFiles Include="../stylecop.json" />
         <AdditionalFiles Include="../Ruleset.ruleset" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\StockApp.Domain\StockApp.Domain.csproj" />
+      <ProjectReference Include="..\StockApp\StockApp.csproj" />
     </ItemGroup>
     <Target Name="Husky" BeforeTargets="Restore;CollectPackageReferences" Condition="'$(HUSKY)' != 0">
         <Exec Command="dotnet tool restore" StandardOutputImportance="Low" StandardErrorImportance="High" />

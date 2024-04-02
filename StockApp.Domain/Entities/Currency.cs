@@ -4,17 +4,17 @@
 
 namespace StockApp.Domain.Entities;
 
-public class Currency
+public sealed class Currency
 {
-    public string Code { get; set; } = string.Empty;
+    public string Code { get; init; } = string.Empty;
 
-    public required int ID { get; set; } = default;
+    public required int ID { get; init; }
 
-    public Country[]? Locations { get; set; }
+    public Country[]? Locations { get; init; }
 
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
 
-    public int Number { get; set; } = default;
+    public int Number { get; init; }
 
-    public string? Symbol { get; set; }
+    public string? Symbol { get; init; }
 }

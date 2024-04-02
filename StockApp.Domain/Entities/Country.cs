@@ -4,9 +4,9 @@
 
 namespace StockApp.Domain.Entities;
 
-public class Country
+public sealed class Country
 {
-    public required int ID { get; set; }
+    public required int ID { get; init; }
 
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
 }
