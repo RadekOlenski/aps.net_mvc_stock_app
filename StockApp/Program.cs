@@ -3,19 +3,28 @@
 // </copyright>
 
 using StockApp.Application.Extensions;
+using StockApp.Extensions;
 using StockApp.Infrastructure.Extensions;
 using StockApp.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
+services.AddControllers();
+services.AddEndpointsApiExplorer();
 services.AddInfrastructure(builder.Configuration);
 services.AddApplication();
+services.AddCors(static options => options.AddFrontedOrigin());
 
 var app = builder.Build();
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetRequiredService<StockAppSeeder>();
 await seeder.Seed();
 
-app.Map("/", static context => context.Response.WriteAsync("hello world"));
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseCors("FrontendClient");
+app.UseRouting();
+
+app.MapControllers();
 app.Run();

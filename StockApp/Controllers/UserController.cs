@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 public class UserController(IUserService userService) : ControllerBase
 {
     [HttpPost]
-    public async Task<ActionResult> Create(User user)
+    public async Task<ActionResult> Create([FromBody] User user)
     {
         await userService.CreateUser(user);
 
