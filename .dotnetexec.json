@@ -1,0 +1,18 @@
+{
+	"name":"stock-app",
+	"env":{},
+	"commands":{
+        "migrations-remove": [
+          "dotnet ef migrations remove -p .\\StockApp.Infrastructure\\StockApp.Infrastructure.csproj -s .\\StockApp\\StockApp.csproj"
+        ],
+		"database-drop": [
+			"dotnet ef database drop -p .\\StockApp\\StockApp.csproj"
+		],
+		"database-update": [
+			"dotnet ef database update -p .\\StockApp\\StockApp.csproj"
+		],
+		"migrations-add": [
+			"dotnet ef migrations add Init -p .\\StockApp.Infrastructure\\StockApp.Infrastructure.csproj -s .\\StockApp\\StockApp.csproj"
+		]
+	}
+}

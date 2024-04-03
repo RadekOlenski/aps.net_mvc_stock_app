@@ -6,7 +6,9 @@ namespace StockApp.Domain.Entities;
 
 public sealed class Country
 {
-    public required int ID { get; init; }
+    public string Code { get; set; } = string.Empty;
+
+    public int ID { get; init; }
 
     public string Name { get; init; } = string.Empty;
 }

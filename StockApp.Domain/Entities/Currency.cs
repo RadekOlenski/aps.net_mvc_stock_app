@@ -8,7 +8,7 @@ public sealed class Currency
 {
     public string Code { get; init; } = string.Empty;
 
-    public required int ID { get; init; }
+    public int ID { get; init; }
 
     public Country[]? Locations { get; init; }
 

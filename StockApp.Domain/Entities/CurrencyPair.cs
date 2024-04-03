@@ -12,7 +12,7 @@ public sealed class CurrencyPair
 
     public string EncodedName { get; private set; } = default!;
 
-    public required int ID { get; init; }
+    public int ID { get; init; }
 
     public void EncodeName() => EncodedName = $"{Bid.Code}/{Ask.Code}";
 }

@@ -16,4 +16,7 @@
         <AdditionalFiles Include="../stylecop.json" />
         <AdditionalFiles Include="../Ruleset.ruleset" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\StockApp.Domain\StockApp.Domain.csproj" />
+    </ItemGroup>
 </Project>

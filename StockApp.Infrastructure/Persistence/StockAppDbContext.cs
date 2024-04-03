@@ -7,11 +7,8 @@ namespace StockApp.Infrastructure.Persistence;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-public class StockAppDbContext : DbContext
+public class StockAppDbContext(DbContextOptions<StockAppDbContext> options) : DbContext(options)
 {
-    public StockAppDbContext(DbContextOptions<StockAppDbContext> options)
-        : base(options) { }
-
     public DbSet<Country> Countries { get; init; }
 
     public DbSet<Currency> Currencies { get; init; }

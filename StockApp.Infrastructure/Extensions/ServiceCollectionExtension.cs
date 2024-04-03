@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence;
+using Seeders;
 
 public static class ServiceCollectionExtension
 {
@@ -15,5 +16,7 @@ public static class ServiceCollectionExtension
     {
         services.AddDbContext<StockAppDbContext>(
             options => options.UseSqlServer(configuration.GetConnectionString("StockApp")));
+
+        services.AddScoped<StockAppSeeder>();
     }
 }

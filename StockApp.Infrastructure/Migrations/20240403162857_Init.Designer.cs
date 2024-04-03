@@ -11,7 +11,7 @@ using StockApp.Infrastructure.Persistence;
 namespace StockApp.Infrastructure.Migrations
 {
     [DbContext(typeof(StockAppDbContext))]
-    [Migration("20240403145832_Init")]
+    [Migration("20240403162857_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -31,6 +31,10 @@ namespace StockApp.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CurrencyID")
                         .HasColumnType("int");
