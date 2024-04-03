@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StockApp.Infrastructure.Persistence;
 
@@ -10,9 +11,11 @@ using StockApp.Infrastructure.Persistence;
 namespace StockApp.Infrastructure.Migrations
 {
     [DbContext(typeof(StockAppDbContext))]
-    partial class StockAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240403180259_AddUser")]
+    partial class AddUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

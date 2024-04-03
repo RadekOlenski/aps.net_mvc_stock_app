@@ -19,6 +19,7 @@
     <AdditionalFiles Include="../Ruleset.ruleset" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StockApp.Application\StockApp.Application.csproj" />
     <ProjectReference Include="..\StockApp.Infrastructure\StockApp.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -28,5 +29,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="NLog.config" />
+      <Folder Include="Controllers\" />
   </ItemGroup>
 </Project>

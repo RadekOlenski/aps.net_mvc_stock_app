@@ -4,6 +4,7 @@
 
 namespace StockApp.Infrastructure.Extensions;
 
+using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,7 @@ using NLog;
 using NLog.Config;
 using NLog.Extensions.Logging;
 using Persistence;
+using Repositories;
 using Seeders;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
@@ -46,5 +48,6 @@ public static class ServiceCollectionExtension
     private static void AddSeeding(this IServiceCollection services)
     {
         services.AddScoped<StockAppSeeder>();
+        services.AddScoped<IUserRepository, UserRepository>();
     }
 }

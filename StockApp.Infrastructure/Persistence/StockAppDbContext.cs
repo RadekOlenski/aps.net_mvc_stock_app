@@ -9,11 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 public class StockAppDbContext(DbContextOptions<StockAppDbContext> options) : DbContext(options)
 {
-    public DbSet<Country> Countries { get; init; }
+    public DbSet<Country> Countries { get; init; } = null!;
 
-    public DbSet<Currency> Currencies { get; init; }
+    public DbSet<Currency> Currencies { get; init; } = null!;
 
-    public DbSet<CurrencyPair> CurrencyPairs { get; init; }
+    public DbSet<CurrencyPair> CurrencyPairs { get; init; } = null!;
+
+    public DbSet<User> Users { get; init; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
