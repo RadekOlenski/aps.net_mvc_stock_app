@@ -9,17 +9,14 @@ using Microsoft.EntityFrameworkCore;
 
 public class StockAppDbContext : DbContext
 {
-    public DbSet<Country> Countries { get; set; }
+    public StockAppDbContext(DbContextOptions<StockAppDbContext> options)
+        : base(options) { }
 
-    public DbSet<Currency> Currencies { get; set; }
+    public DbSet<Country> Countries { get; init; }
 
-    public DbSet<CurrencyPair> CurrencyPairs { get; set; }
+    public DbSet<Currency> Currencies { get; init; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(
-            "Server=tcp:stock-app.database.windows.net,1433;Initial Catalog=StockApp;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=\"Active Directory Default\";");
-    }
+    public DbSet<CurrencyPair> CurrencyPairs { get; init; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

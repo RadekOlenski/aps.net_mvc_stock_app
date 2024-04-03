@@ -11,7 +11,7 @@ using StockApp.Infrastructure.Persistence;
 namespace StockApp.Infrastructure.Migrations
 {
     [DbContext(typeof(StockAppDbContext))]
-    [Migration("20240402224322_Init")]
+    [Migration("20240403145832_Init")]
     partial class Init
     {
         /// <inheritdoc />
