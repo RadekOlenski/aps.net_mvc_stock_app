@@ -5,14 +5,16 @@
 namespace StockApp.Infrastructure.Seeders;
 
 using Extensions;
+using Microsoft.Extensions.Logging;
 using Persistence;
 
-public sealed class StockAppSeeder(StockAppDbContext dbContext)
+public sealed class StockAppSeeder(StockAppDbContext dbContext, ILogger<StockAppSeeder> logger)
 {
     public async Task Seed()
     {
         if (!await dbContext.Database.CanConnectAsync())
         {
+            logger.LogError("Connection to database failed.");
             return;
         }
 
@@ -20,12 +22,14 @@ public sealed class StockAppSeeder(StockAppDbContext dbContext)
         SeedCurrencies();
         SeedCurrencyPairs();
         await dbContext.SaveChangesAsync();
+        logger.LogInformation("Database changes saved");
     }
 
     private void SeedCountries()
     {
         if (dbContext.Countries.Any())
         {
+            logger.LogInformation("Database countries already seeded.");
             return;
         }
 
@@ -40,6 +44,7 @@ public sealed class StockAppSeeder(StockAppDbContext dbContext)
     {
         if (dbContext.Currencies.Any())
         {
+            logger.LogInformation("Database currencies already seeded.");
             return;
         }
 
@@ -66,6 +71,7 @@ public sealed class StockAppSeeder(StockAppDbContext dbContext)
     {
         if (dbContext.CurrencyPairs.Any())
         {
+            logger.LogInformation("Database currency pairs already seeded.");
             return;
         }
 
